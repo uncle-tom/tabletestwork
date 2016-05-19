@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vladimir Samojlov",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-rigger": "^0.5.8",
+    "gulp-watch": "^4.3.5"
+  }
 }
