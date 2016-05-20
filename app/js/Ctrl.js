@@ -2,7 +2,10 @@ angular
 	.module('app', [])
 	.controller('Ctrl', Ctrl);
 
-	$http.get('data.json').success(data, config, status, headers) {
-		$scope.data = data;
+	function Ctrl($scope, $http) {
+		$http.get('../data.json').success(function(data, config, status, headers){
+			$scope.data = data;
+		});	
 	}
+	
 

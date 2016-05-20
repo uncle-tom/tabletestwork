@@ -2,11 +2,13 @@ angular
 	.module('app', [])
 	.controller('Ctrl', Ctrl);
 
-	$http.get('data.json').success(data, config, status, headers) {
-		$scope.data = data;
+	function Ctrl($scope, $http) {
+		$http.get('../data.json').success(function(data, config, status, headers){
+			$scope.data = data;
+		});	
 	}
 angular
-	.module('app', [])
+	.module('app')
 	.directive('tabletestwork', function(){
   	return {
         template:   
@@ -14,7 +16,7 @@ angular
     					'<table>' +
                 '<tr>' +
                   '<td>{{as.colorName}}</td>' +
-                  '<td>{{as.hexValue}}</td>' +
+                  '<td style="background-color:{{as.hexValue}}">{{as.hexValue}}</td>' +
                 '</tr>' +
               '</table>' +
             '</div>',

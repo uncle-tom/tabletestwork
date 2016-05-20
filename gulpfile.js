@@ -1,33 +1,47 @@
 'use strict';
 
 var gulp = require('gulp'),
-    watch = require('gulp-watch'),
-    rigger = require('gulp-rigger'),
-    browserSync = require("browser-sync"),
-    reload = browserSync.reload;
+  watch = require('gulp-watch'),
+  rigger = require('gulp-rigger'),
+  browserSync = require("browser-sync"),
+  reload = browserSync.reload;
+
+var config = {
+    server: {
+        baseDir: "./build"
+    },
+    tunnel: true,
+    host: 'localhost',
+    port: 9000,
+    logPrefix: "Test table task: Volodymyr Samoilov"
+};
 
 var path = {
-    build: { //Тут мы укажем куда складывать готовые после сборки файлы
-        html: 'build/',
-        js: 'build/js/',
-        css: 'build/css/',
-    },
-    src: { //Пути откуда брать исходники
-        html: 'app/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-        js: 'app.js',//В стилях и скриптах нам понадобятся только main файлы
-        style: 'app/style/main.scss',
-    },
-    watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
-        html: 'src/**/*.html',
-        js: 'src/js/**/*.js',
-        style: 'src/style/**/*.scss',
-    },
-    clean: './build'
+  build: {
+    js: 'build/js/'
+  },
+  src: { 
+    vendors: 'vendors.js',
+    js: 'app.js'
+  },
+  clean: './build'
 };
 
 gulp.task('js:build', function () {
-    gulp.src(path.src.js) //Найдем наш main файл
-        .pipe(rigger()) //Прогоним через rigger
-        .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
-        .pipe(reload({stream: true})); //И перезагрузим сервер
+  gulp.src(path.src.js)
+    .pipe(rigger())
+    .pipe(gulp.dest(path.build.js))
+    .pipe(reload({stream: true}));
 });
+
+gulp.task('vendors:build', function () {
+  gulp.src(path.src.vendors)
+    .pipe(rigger())
+    .pipe(gulp.dest(path.build.js))
+});
+
+gulp.task('webserver', function () {
+    browserSync(config);
+});
+
+gulp.task('default', ['js:build', 'vendors:build', 'webserver']);

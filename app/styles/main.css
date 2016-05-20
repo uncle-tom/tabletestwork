@@ -1,0 +1,13 @@
+table {
+  width: 200px;
+  table-layout:fixed;
+}
+
+td {
+  border: 1px solid black;
+}
+
+td:nth-child(2n) {
+  color: #fff;
+  font-weight: 700;
+}

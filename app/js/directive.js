@@ -1,5 +1,5 @@
 angular
-	.module('app', [])
+	.module('app')
 	.directive('tabletestwork', function(){
   	return {
         template:   
