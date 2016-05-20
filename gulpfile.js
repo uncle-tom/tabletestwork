@@ -18,11 +18,13 @@ var config = {
 
 var path = {
   build: {
-    js: 'build/js/'
+    js: 'build/js/',
+    css: 'build/styles/'
   },
   src: { 
     vendors: 'vendors.js',
-    js: 'app.js'
+    js: 'app.js',
+    css: 'app.css'
   },
   clean: './build'
 };
@@ -31,7 +33,6 @@ gulp.task('js:build', function () {
   gulp.src(path.src.js)
     .pipe(rigger())
     .pipe(gulp.dest(path.build.js))
-    .pipe(reload({stream: true}));
 });
 
 gulp.task('vendors:build', function () {
@@ -40,8 +41,14 @@ gulp.task('vendors:build', function () {
     .pipe(gulp.dest(path.build.js))
 });
 
+gulp.task('css:build', function () {
+  gulp.src(path.src.css)
+    .pipe(rigger())
+    .pipe(gulp.dest(path.build.css))
+});
+
 gulp.task('webserver', function () {
     browserSync(config);
 });
 
-gulp.task('default', ['js:build', 'vendors:build', 'webserver']);
+gulp.task('default', ['js:build', 'vendors:build', 'css:build', 'webserver']);
