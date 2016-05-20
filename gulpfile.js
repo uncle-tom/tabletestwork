@@ -3,7 +3,6 @@
 var gulp = require('gulp'),
   rigger = require('gulp-rigger'),
   browserSync = require("browser-sync"),
-  sass   = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
   cssmin = require('gulp-minify-css'),
   reload = browserSync.reload;
@@ -46,7 +45,7 @@ gulp.task('vendors:build', function () {
 gulp.task('css:build', function () {
   gulp.src(path.src.css)
     .pipe(sourcemaps.init())
-    .pipe(sass())
+    
     .pipe(cssmin())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(path.build.css))
