@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-  watch = require('gulp-watch'),
   rigger = require('gulp-rigger'),
   browserSync = require("browser-sync"),
   reload = browserSync.reload;

@@ -8,8 +8,9 @@
   },
   "author": "Vladimir Samojlov",
   "license": "ISC",
-  "devDependencies": {
-    "gulp-rigger": "^0.5.8",
-    "gulp-watch": "^4.3.5"
+  "devDependencies": {},
+  "dependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp-rigger": "^0.5.8"
   }
 }
