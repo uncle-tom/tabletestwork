@@ -1,3 +1,8 @@
-### use:
+### use
+```
 npm install
+```
+
+```
 gulp
+```
