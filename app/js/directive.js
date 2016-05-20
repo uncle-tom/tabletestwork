@@ -7,7 +7,7 @@ angular
     					'<table>' +
                 '<tr>' +
                   '<td>{{as.colorName}}</td>' +
-                  '<td>{{as.hexValue}}</td>' +
+                  '<td style="background-color:{{as.hexValue}}">{{as.hexValue}}</td>' +
                 '</tr>' +
               '</table>' +
             '</div>',
