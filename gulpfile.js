@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 
 var config = {
     server: {
-        baseDir: "./build"
+        baseDir: ""
     },
     tunnel: true,
     host: 'localhost',
